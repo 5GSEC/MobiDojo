@@ -1,7 +1,7 @@
 version: '3.8'
 services:
     oai-gnb:
-        image: oaisoftwarealliance/gnb:develop
+        image: oaisoftwarealliance/oai-gnb:develop
         expose:
             - 4043/tcp
             - 8080/tcp
