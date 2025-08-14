@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, jsonify
 import subprocess
 from datetime import datetime
+import os
 
 function2_bp = Blueprint('function2', __name__, template_folder='/')
 
@@ -85,21 +86,27 @@ def get_containers():
 @function2_bp.route('/save_log/<container_name>', methods=['POST'])
 def save_log(container_name):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"~/MobiDojo/logs/{timestamp}_{container_name}.log"
+    log_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "logs"))
+    os.makedirs(log_dir, exist_ok=True)
+    filename = os.path.join(log_dir, f"{timestamp}_{container_name}.log")
     success, output = run_command(f"docker logs {container_name} > {filename} 2>&1")
     return jsonify({'message': f'Log saved to {filename}' if success else f'Error: {output}'})
 
 @function2_bp.route('/save_pcap/<container_name>', methods=['POST'])
 def save_pcap(container_name):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"~/MobiDojo/pcaps/{timestamp}_{container_name}.pcap"
-    success, output = run_command(f"docker cp {container_name}:/home/pcap.pcap {filename}")
+    pcap_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "pcaps"))
+    os.makedirs(pcap_dir, exist_ok=True)
+    filename = os.path.join(pcap_dir, f"{timestamp}_{container_name}.pcap")
+    success, output = run_command(f"docker cp {container_name}:/home/pcap_{container_name}.pcap {filename}")
     return jsonify({'message': f'PCAP saved to {filename}' if success else f'Error: {output}'})
 
 @function2_bp.route('/capture_core', methods=['POST'])
 def capture_core():
     date_string = datetime.now().strftime("%Y%m%d_%H%M%S")
-    pcap_file = f"~/MobiDojo/pcaps/{date_string}_core.pcap"
+    pcap_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "pcaps"))
+    os.makedirs(pcap_dir, exist_ok=True)
+    pcap_file = os.path.join(pcap_dir, f"{date_string}_core.pcap")
     command = f"sudo tshark -i demo-oai -f \"not host 192.168.70.154 and not host 192.168.70.155\" -w {pcap_file}"
     gnome_terminal_command = f"gnome-terminal -- bash -c '{command}; exec bash'"
     
