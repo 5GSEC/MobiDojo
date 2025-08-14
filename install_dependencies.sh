@@ -13,6 +13,7 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update
 # Install the latest available versions of docker-ce, docker-ce-cli, and containerd.io
 sudo apt install -y docker-ce docker-ce-cli containerd.io
+sudo apt install -y python3-tk
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
@@ -64,7 +65,8 @@ pip3 install \
     markupsafe==2.0.1 \
     python-engineio==4.2.1 \
     python-socketio==5.4.0 \
-    werkzeug==2.0.1
+    werkzeug==2.0.1 \
+    scapy
 
 #5G-Spector
 
