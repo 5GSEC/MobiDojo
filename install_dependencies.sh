@@ -11,7 +11,8 @@ sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-p
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt update
-sudo apt install docker-ce=5:19.03.9~3-0~ubuntu-$(lsb_release -cs) docker-ce-cli=5:19.03.9~3-0~ubuntu-$(lsb_release -cs) containerd.io
+# Install the latest available versions of docker-ce, docker-ce-cli, and containerd.io
+sudo apt install -y docker-ce docker-ce-cli containerd.io
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
@@ -39,7 +40,7 @@ sudo docker pull oaisoftwarealliance/oai-lmf:v2.0.0
 sudo docker pull oaisoftwarealliance/trf-gen-cn5g:latest
 sudo docker pull oaisoftwarealliance/oai-gnb:v2.1.0
 sudo docker pull oaisoftwarealliance/oai-nr-ue:v2.1.0
-docker pull onehouwong/oai-nr-ue:nr.attack.v2.1.0
+docker pull seranai/oai-nr-ue:nr.attack.v2.1.0
 
 # mysql-healthcheck permission update
 sudo chmod 755 oai/healthscripts/mysql*

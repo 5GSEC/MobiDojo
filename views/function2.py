@@ -32,7 +32,7 @@ def turn_on_base():
 
 @function2_bp.route('/turn_off_base', methods=['POST'])
 def turn_off_base():
-    success, output = run_command('docker-compose -f docker-compose-1gnb3slices-gnbue.yaml down oai-gnb')
+    success, output = run_command('docker-compose -f docker-compose-1gnb3slices-gnbue.yaml stop oai-gnb')
     return jsonify({'message': 'Base Station turned off' if success else f'Error: {output}'})
 
 @function2_bp.route('/turn_on_ue', methods=['POST'])
@@ -42,7 +42,7 @@ def turn_on_ue():
 
 @function2_bp.route('/turn_off_ue', methods=['POST'])
 def turn_off_ue():
-    success, output = run_command('docker-compose -f docker-compose-1gnb3slices-gnbue.yaml down oai-nr-ue1 oai-nr-ue2')
+    success, output = run_command('docker-compose -f docker-compose-1gnb3slices-gnbue.yaml stop oai-nr-ue1 oai-nr-ue2')
     return jsonify({'message': 'UEs turned off' if success else f'Error: {output}'})
 
 @function2_bp.route('/turn_on_all', methods=['POST'])

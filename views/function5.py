@@ -44,7 +44,7 @@ def launch_spector():
     f"--name attack-nr-ue "
     f"-v {os.getcwd()}/attack.conf:/opt/oai-nr-ue/etc/nr-ue.conf "
     f"-e USE_ADDITIONAL_OPTIONS='--rfsim --log_config.global_log_options level,nocolor,time -E --sa -r 106 --numerology 1 -C 3619200000 --rfsimulator.serveraddr 192.168.70.153 {command}' "
-    f"-it onehouwong/oai-nr-ue:nr.attack.v2.1.0 "
+    f"-it seranai/oai-nr-ue:nr.attack.v2.1.0 "
 )
     
     try:
