@@ -145,8 +145,8 @@
             fetch('/function1/check_status')
                 .then(response => response.json())
                 .then(data => {
-                    // Remove existing modules
-                    svg.selectAll(".module").remove();
+                    // Remove existing modules and their text
+                    svg.selectAll(".module-group").remove();
 
                     // Group containers by their group
                     const groupedData = d3.group(data, d => d.group);
@@ -165,16 +165,20 @@
                             // Determine outline color based on status
                             const statusColor = container.status === 'healthy' ? "green" : "red";
 
-                            svg.append("rect")
+                            // Create a group for each module (container + text)
+                            const moduleGroup = svg.append("g")
+                                .attr("class", "module-group");
+
+                            moduleGroup.append("rect")
                                .attr("class", "module")
                                .attr("x", x)
                                .attr("y", y)
                                .attr("width", containerSize)
                                .attr("height", containerSize)
-                               .attr("fill", container.status === 'healthy' ? "green" : "red")
+                               .attr("fill", container.status === 'healthy' ? "green" : "red");
 
                             const words = container.name.split('-');
-                            const textGroup = svg.append("g")
+                            const textGroup = moduleGroup.append("g")
                                 .attr("transform", `translate(${x + containerSize/2}, ${y + containerSize/2})`);
                             
                             textGroup.selectAll("text")
