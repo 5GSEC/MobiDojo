@@ -7,10 +7,10 @@ def select_seed():
     choice = input("Enter your choice: ")
     
     if choice.strip() == "1":
-        return "InitialUEMessage.pcap"
+        return "pcap/InitialUEMessage.pcap"
     else:
         print("Invalid choice. Using default: InitialUEMessage.pcap")
-        return "InitialUEMessage.pcap"
+        return "pcap/InitialUEMessage.pcap"
 
 def select_offsets():
     print("Select offsets to modify:")
