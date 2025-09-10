@@ -13,7 +13,8 @@ MobiDojo can be easily installed on any commodity Linux (e.g., Ubuntu) machines 
 ```
 git clone https://github.com/5GSEC/MobiDojo.git
 ./install_dependencies.sh
-python3 app.py
+source venv/bin/activate
+(venv) python3 app.py
 ```
 
 ## Major Interfaces and Functions
