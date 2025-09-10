@@ -37,7 +37,7 @@ sudo docker pull oaisoftwarealliance/oai-ausf:v2.0.0
 sudo docker pull oaisoftwarealliance/oai-upf-vpp:v2.0.0
 sudo docker pull oaisoftwarealliance/oai-nssf:v2.0.0
 sudo docker pull oaisoftwarealliance/oai-pcf:v2.0.0
-sudo docker pull oaisoftwarealliance/oai-lmf:v2.0.0
+sudo docker pull oaisoftwarealliance/oai-lmf:v2.1.0
 sudo docker pull oaisoftwarealliance/trf-gen-cn5g:latest
 sudo docker pull oaisoftwarealliance/oai-gnb:v2.1.0
 sudo docker pull oaisoftwarealliance/oai-nr-ue:v2.1.0
