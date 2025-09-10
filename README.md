@@ -17,6 +17,8 @@ source venv/bin/activate
 (venv) python3 app.py
 ```
 
+Then, access the web interface through `http://127.0.0.1:5000` (if local), or `http://<server-ip>:5000` (remote).
+
 ## Major Interfaces and Functions
 
 The picture below shows the interfaces of an intial release of MobiDojo.
