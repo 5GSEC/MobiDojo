@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Wireshark 
 sudo add-apt-repository -y ppa:wireshark-dev/stable
