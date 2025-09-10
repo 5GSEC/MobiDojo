@@ -7,9 +7,9 @@ sudo apt install -y wireshark
 
 # Docker & Docker Compose 
 sudo apt update
-sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt update
 # Install the latest available versions of docker-ce, docker-ce-cli, and containerd.io
 sudo apt install -y docker-ce docker-ce-cli containerd.io
@@ -71,7 +71,7 @@ pip3 install \
 #5G-Spector
 
 #5Greplay
-sudo apt update && sudo apt install gcc make git libxml2-dev libpcap-dev libconfuse-dev libsctp-dev
+sudo apt update && sudo apt install -y gcc make git libxml2-dev libpcap-dev libconfuse-dev libsctp-dev
 wget https://github.com/Montimage/mmt-dpi/releases/download/v1.7.9/mmt-dpi_1.7.9_8694eaa_Linux_x86_64.deb && sudo dpkg -i ./mmt-dpi*.deb && sudo ldconfig
 
 
