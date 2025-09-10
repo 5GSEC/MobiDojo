@@ -54,12 +54,11 @@ sudo apt install -y python3.11 python3.11-venv python3.11-dev
 sudo apt install -y python3-pip
 
 python3 -m venv venv
-source venv/bin/activate
-pip3 install Flask
+./venv/bin/pip install Flask
 
 #Pyxterm
 git clone https://github.com/cs01/pyxtermjs.git
-pip3 install \
+./venv/bin/pip install \
     bidict==0.21.2 \
     click==8.0.1 \
     flask==2.0.1 \
