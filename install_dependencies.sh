@@ -69,6 +69,7 @@ git clone https://github.com/cs01/pyxtermjs.git
     python-engineio==4.2.1 \
     python-socketio==5.4.0 \
     werkzeug==2.0.1 \
+    eventlet==0.40.3 \
     scapy
 
 #5G-Spector
