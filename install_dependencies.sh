@@ -51,6 +51,9 @@ sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install -y python3.11 python3.11-venv python3.11-dev
 sudo apt install -y python3-pip
+
+python3 -m venv venv
+source venv/bin/activate
 pip3 install Flask
 
 #Pyxterm
