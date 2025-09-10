@@ -17,7 +17,7 @@ source venv/bin/activate
 (venv) python3 app.py
 ```
 
-Then, access the web interface through `http://127.0.0.1:5000` (if local), or `http://<server-ip>:5000` (remote).
+Then, access the web interface through `http://127.0.0.1:5000`.
 
 ## Major Interfaces and Functions
 
