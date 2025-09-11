@@ -3,7 +3,7 @@
 # Wireshark 
 sudo add-apt-repository -y ppa:wireshark-dev/stable
 sudo apt update
-sudo apt install -y wireshark
+sudo apt install -y wireshark tshark
 
 # Docker & Docker Compose 
 sudo apt update
