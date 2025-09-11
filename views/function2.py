@@ -107,11 +107,10 @@ def capture_core():
     pcap_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "pcaps"))
     os.makedirs(pcap_dir, exist_ok=True)
     pcap_file = os.path.join(pcap_dir, f"{date_string}_core.pcap")
-    command = f"sudo tshark -i demo-oai -f \"not host 192.168.70.154 and not host 192.168.70.155\" -w {pcap_file}"
-    gnome_terminal_command = f"gnome-terminal -- bash -c '{command}; exec bash'"
+    command = f"tshark -i demo-oai -f \"not host 192.168.70.154 and not host 192.168.70.155\" -w {pcap_file}"
     
     try:
-        subprocess.Popen(gnome_terminal_command, shell=True)
+        subprocess.Popen(command, shell=True)
         return jsonify({'message': 'Core network capture started successfully'})
     except Exception as e:
         return jsonify({'message': f'Error starting capture: {str(e)}'}), 500
