@@ -71,7 +71,7 @@ pip3 install \
 #5G-Spector
 
 #5Greplay
-sudo apt update && sudo apt install gcc make git libxml2-dev libpcap-dev libconfuse-dev libsctp-dev
+sudo apt update && sudo apt install -y gcc make git libxml2-dev libpcap-dev libconfuse-dev libsctp-dev
 wget https://github.com/Montimage/mmt-dpi/releases/download/v1.7.9/mmt-dpi_1.7.9_8694eaa_Linux_x86_64.deb && sudo dpkg -i ./mmt-dpi*.deb && sudo ldconfig
 
 
