@@ -3,7 +3,8 @@
 # Wireshark 
 sudo add-apt-repository -y ppa:wireshark-dev/stable
 sudo apt update
-sudo apt install -y wireshark
+sudo apt install -y wireshark tshark
+sudo chmod 777 views/pcaps
 
 # Docker & Docker Compose 
 sudo apt update
@@ -25,6 +26,7 @@ sudo iptables -P FORWARD ACCEPT
 # docker config
 sudo groupadd docker
 sudo usermod -aG docker $USER
+newgrp docker
 
 # docker image
 sudo docker pull oaisoftwarealliance/oai-amf:v2.0.0
