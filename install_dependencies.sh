@@ -5,6 +5,7 @@ set -e
 sudo add-apt-repository -y ppa:wireshark-dev/stable
 sudo apt update
 sudo apt install -y wireshark tshark
+sudo usermod -aG wireshark $USER
 
 # Docker & Docker Compose 
 sudo apt update
