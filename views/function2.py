@@ -43,6 +43,7 @@ def turn_on_ue():
 
 @function2_bp.route('/turn_off_ue', methods=['POST'])
 def turn_off_ue():
+    success, output = run_command('docker stop attack-nr-ue')
     success, output = run_command('docker-compose -f docker-compose-1gnb3slices-gnbue.yaml stop oai-nr-ue1 oai-nr-ue2')
     return jsonify({'message': 'UEs turned off' if success else f'Error: {output}'})
 
@@ -54,6 +55,7 @@ def turn_on_all():
 
 @function2_bp.route('/turn_off_all', methods=['POST'])
 def turn_off_all():
+    success, output = run_command('docker stop attack-nr-ue && docker rm attack-nr-ue')
     success, output = run_command('docker-compose -f docker-compose-1gnb3slices-gnbue.yaml down --remove-orphans')
     return jsonify({'message': 'All components turned off' if success else f'Error: {output}'})
 

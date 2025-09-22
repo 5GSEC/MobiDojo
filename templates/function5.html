@@ -237,7 +237,7 @@
                     if (data.status === 'error') {
                         alert(data.message);
                     } else {
-                        document.getElementById('message').innerText = data.message + ". Please check the new terminal window.";
+                        document.getElementById('message').innerText = data.message;
                     }
                 })
                 .catch(error => console.error('Error:', error));
@@ -254,7 +254,7 @@
                     })
                     .then(response => response.json())
                     .then(data => {
-                        document.getElementById('message').innerText = data.message + ". Please check the new terminal window.";
+                        document.getElementById('message').innerText = data.message;
                     })
                     .catch(error => console.error('Error:', error));
                 } else {
@@ -267,7 +267,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('message').innerText = data.message + ". Please check the new terminal window.";
+                    document.getElementById('message').innerText = data.message;
                 })
                 .catch(error => console.error('Error:', error));
             });
@@ -278,7 +278,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('message').innerText = data.message + ". Please check the new terminal window.";
+                    document.getElementById('message').innerText = data.message;
                 })
                 .catch(error => console.error('Error:', error));
             });

@@ -35,9 +35,9 @@ def function3():
             success, container_logs = run_command(f'docker logs --tail 3000 {container}')
             if success:
                 for line in container_logs.split('\n'):
+                    logs.append(f"{container}: {line}")
+                    container_set.add(container)
                     if '[error]' in line.lower() or '[warning]' in line.lower():
-                        logs.append(f"{container}: {line}")
-                        container_set.add(container)
                         if '[error]' in line.lower():
                             error_count += 1
                         else:
