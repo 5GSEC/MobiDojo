@@ -1,16 +1,16 @@
 #!/bin/bash
+set -e
 
 # Wireshark 
 sudo add-apt-repository -y ppa:wireshark-dev/stable
 sudo apt update
 sudo apt install -y wireshark tshark
-sudo chmod 777 views/pcaps
 
 # Docker & Docker Compose 
 sudo apt update
-sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+sudo apt install -y apt-transport-https gnome-terminal ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt update
 # Install the latest available versions of docker-ce, docker-ce-cli, and containerd.io
 sudo apt install -y docker-ce docker-ce-cli containerd.io
@@ -24,9 +24,11 @@ sudo sysctl net.ipv4.conf.all.forwarding=1
 sudo iptables -P FORWARD ACCEPT
 
 # docker config
-sudo groupadd docker
+if ! getent group docker > /dev/null; then
+    sudo groupadd docker
+fi
 sudo usermod -aG docker $USER
-newgrp docker
+# newgrp docker
 
 # docker image
 sudo docker pull oaisoftwarealliance/oai-amf:v2.0.0
@@ -39,25 +41,24 @@ sudo docker pull oaisoftwarealliance/oai-ausf:v2.0.0
 sudo docker pull oaisoftwarealliance/oai-upf-vpp:v2.0.0
 sudo docker pull oaisoftwarealliance/oai-nssf:v2.0.0
 sudo docker pull oaisoftwarealliance/oai-pcf:v2.0.0
-sudo docker pull oaisoftwarealliance/oai-lmf:v2.0.0
+sudo docker pull oaisoftwarealliance/oai-lmf:v2.1.0
 sudo docker pull oaisoftwarealliance/trf-gen-cn5g:latest
 sudo docker pull oaisoftwarealliance/oai-gnb:v2.1.0
 sudo docker pull oaisoftwarealliance/oai-nr-ue:v2.1.0
-docker pull seranai/oai-nr-ue:nr.attack.v2.1.0
-
-# mysql-healthcheck permission update
-sudo chmod 755 oai/healthscripts/mysql*
+sudo docker pull seranai/oai-nr-ue:nr.attack.v2.1.0
 
 # Python
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install -y python3.11 python3.11-venv python3.11-dev
 sudo apt install -y python3-pip
-pip3 install Flask
+
+python3.11 -m venv venv
+./venv/bin/pip install Flask
 
 #Pyxterm
 git clone https://github.com/cs01/pyxtermjs.git
-pip3 install \
+./venv/bin/pip install \
     bidict==0.21.2 \
     click==8.0.1 \
     flask==2.0.1 \
@@ -68,6 +69,7 @@ pip3 install \
     python-engineio==4.2.1 \
     python-socketio==5.4.0 \
     werkzeug==2.0.1 \
+    eventlet==0.40.3 \
     scapy
 
 #5G-Spector
