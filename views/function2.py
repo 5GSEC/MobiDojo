@@ -111,6 +111,6 @@ def capture_core():
     
     try:
         subprocess.Popen(command, shell=True)
-        return jsonify({'message': 'Core network capture started successfully'})
+        return jsonify({'message': f'Core network capture started successfully, pcap file is saved in {pcap_file}'})
     except Exception as e:
         return jsonify({'message': f'Error starting capture: {str(e)}'}), 500
