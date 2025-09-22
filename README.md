@@ -13,6 +13,15 @@ MobiDojo can be easily installed on any commodity Linux (e.g., Ubuntu) machines 
 ```
 git clone https://github.com/5GSEC/MobiDojo.git
 ./install_dependencies.sh
+```
+
+Allow non-root users to capture packets when prompted during installation.
+
+After installation is compelted, make sure `docker` can run for non-root users, e.g., use `docker ps -a` to ensure it is not blocked by permission checks. You may need to take a complete reboot (when you run a VM) to let the docker config take effect.
+
+To run MobiDojo:
+
+```
 source venv/bin/activate
 (venv) python3 app.py
 ```
