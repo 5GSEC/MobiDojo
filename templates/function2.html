@@ -182,8 +182,32 @@
                 .catch(error => console.error('Error:', error));
         }
     
+        // Polling configuration
+        let pollingInterval = null;
+        const POLLING_INTERVAL_MS = 5000; // 5 seconds
+
+        function startPolling() {
+            if (pollingInterval) {
+                clearInterval(pollingInterval);
+            }
+            pollingInterval = setInterval(populateDropdowns, POLLING_INTERVAL_MS);
+        }
+
+        function stopPolling() {
+            if (pollingInterval) {
+                clearInterval(pollingInterval);
+                pollingInterval = null;
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             populateDropdowns();
+            startPolling();
+        });
+
+        // Clean up polling when page is unloaded
+        window.addEventListener('beforeunload', function() {
+            stopPolling();
         });
 </script>
 </body>
