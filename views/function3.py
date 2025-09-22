@@ -31,7 +31,8 @@ def function3():
             containers_to_check = [selected_container]
 
         for container in containers_to_check:
-            success, container_logs = run_command(f'docker logs {container}')
+            # Limit docker logs to the latest 3000 lines
+            success, container_logs = run_command(f'docker logs --tail 3000 {container}')
             if success:
                 for line in container_logs.split('\n'):
                     if '[error]' in line.lower() or '[warning]' in line.lower():
