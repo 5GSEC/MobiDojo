@@ -1,6 +1,6 @@
 # MobiDojo
 
-MobiDojo is a Virtual Security Combat Platform for 5G Cellular Networks that supports one-click 5G deployment and security testing with web-based graphical user interfaces. It is built on entirely virtual (i.e., no radio hardware required) open-source software - the [OpenAirInterface](https://gitlab.eurecom.fr/oai/openairinterface5g/)'s 5G stack deployed as Docker containers. Running MobiDojo does not require **any** radio hardware as it fully leverage OAI's RF emulation capability while still provide an end-to-end and standard-compliant 5G network for protocol-level security testing and experiments.
+MobiDojo is a Virtual Security Combat Platform for 5G Cellular Networks that supports one-click 5G deployment and security testing with web-based graphical user interfaces. It is built on entirely virtual (i.e., no radio hardware required) open-source software - the [OpenAirInterface](https://gitlab.eurecom.fr/oai/openairinterface5g/)'s 5G stack deployed as Docker containers. Running MobiDojo does not require **any** radio hardware as it fully leverage OAI's RF emulation capability while still providing an end-to-end and standard-compliant 5G network for protocol-level security testing and experiments.
 
 If you want to learn about the details of MoboDojo, please checkout our [technical paper](https://onehouwong.github.io/papers/MobiDojo_FutureG25.pdf) (in FutureG'25 workshop) and our [demo video](https://www.5gsec.com/post/mobidojo-a-virtual-security-combat-platform-for-5g-cellular-networks).
 
@@ -17,7 +17,7 @@ git clone https://github.com/5GSEC/MobiDojo.git
 
 Allow non-root users to capture packets when prompted during installation.
 
-After installation is compelted, make sure `docker` can run for non-root users, e.g., use `docker ps -a` to ensure it is not blocked by permission checks. You may need to take a complete reboot (when you run a VM) to let the docker config take effect.
+After installation is completed, make sure `docker` can run for non-root users, e.g., use `docker ps -a` to ensure it is not blocked by permission checks. You may need to perform a complete reboot (when you run a VM) to let the docker config take effect.
 
 To run MobiDojo:
 
@@ -30,7 +30,7 @@ Then, access the web interface through `http://127.0.0.1:5000` (local deployment
 
 ## Major Interfaces and Functions
 
-The picture below shows the interfaces of an intial release of MobiDojo.
+The picture below shows the interfaces of an initial release of MobiDojo.
 
 ![alt text](./figure/overview.png)
 
